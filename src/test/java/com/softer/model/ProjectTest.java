@@ -1,14 +1,15 @@
 package com.softer.model;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProjectTest {
     @Test
+    @Order(1)
     @DisplayName("Debe crear un proyecto cuando todos los datos son válidos")
     void shouldCreateProjectWithValidData(){
         Project project = new Project(
@@ -29,6 +30,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("Debe rechazar un proyecto sin código")
     void shouldRejectProjectWithoutCode() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -44,6 +46,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(3)
     @DisplayName("Debe rechazar un proyecto con código vacío")
     void shouldRejectProjectWithBlankCode() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -59,6 +62,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("Debe rechazar un proyecto sin nombre")
     void shouldRejectProjectWithoutName(){
         assertThrows(IllegalArgumentException.class, () -> {
@@ -74,6 +78,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(5)
     @DisplayName("Debe rechazar un proyecto con nombre vacío")
     void shouldRejectProjectWithBlankName(){
         assertThrows(IllegalArgumentException.class, () -> {
