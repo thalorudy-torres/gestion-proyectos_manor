@@ -27,7 +27,8 @@ public class ProjectTest {
     }
 
     @Test
-    void shouldRejectProjectWithoutCode() { assertThrows(IllegalArgumentException.class, () -> {
+    void shouldRejectProjectWithoutCode() {
+        assertThrows(IllegalArgumentException.class, () -> {
         new Project(
                 null,
                 "Sistema de ventas",
@@ -35,6 +36,20 @@ public class ProjectTest {
                 IndustrySector.RETAIL,
                 new BigDecimal("150000.00"),
                 ProjectStatus.PROPOSED
+            );
+        });
+    }
+
+    @Test
+    void shouldRejectProjectWithBlankCode() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Project(
+                    "",
+                    "Sistema de ventas",
+                    "Cliente ABC",
+                    IndustrySector.RETAIL,
+                    new BigDecimal("150000.00"),
+                    ProjectStatus.PROPOSED
             );
         });
     }

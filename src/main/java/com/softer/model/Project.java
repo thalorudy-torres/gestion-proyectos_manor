@@ -11,8 +11,8 @@ public class Project {
     private ProjectStatus status;
 
     public Project(String code, String name, String clientName, IndustrySector sector, BigDecimal budget, ProjectStatus status) {
-        if(code == null){
-
+        if(code == null || code.isBlank()){
+            throw new IllegalArgumentException("El código del proyecto es obligatorio");
         }
 
         this.code = code;
